@@ -1,7 +1,7 @@
 import random
 
 from drf_spectacular.utils import extend_schema, OpenApiParameter
-from rest_framework import status, viewsets, generics
+from rest_framework import status, generics
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
