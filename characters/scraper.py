@@ -1,3 +1,5 @@
+from sqlite3 import IntegrityError
+
 import requests
 
 from characters.models import Characters
@@ -30,7 +32,10 @@ def scrape_characters() -> list[Characters]:
 
 def save_characters(characters: list[Characters]) -> None:
     for character in characters:
-        character.save()
+        try:
+            character.save()
+        except IntegrityError:
+            print("User with api id {} already exists".format(character.api_id))
 
 
 def sync_characters_with_api() -> None:
